@@ -7,8 +7,8 @@ class Header extends Component {
         return (
             <header>
                 <NavLink  exact to='/' className='nav'>Home</NavLink>
-                <NavLink  to='/signup' className='nav'>Sign-up</NavLink>
-                <NavLink  to='/signin' className='nav'>Log in</NavLink>
+                <NavLink  to='/signup' className='nav'>Sign up</NavLink>
+                <NavLink  to='/signin' className='nav'>Sign in</NavLink>
             </header>
         );
     }

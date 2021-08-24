@@ -1,7 +1,15 @@
-const URL = 'https://glacial-ridge-47333.herokuapp.com/'
+// const URL = 'https://glacial-ridge-47333.herokuapp.com/'
 
-export const getUser = async () => {
-    const resp = await fetch (`${URL}/login`)
-    const data = await resp.json();
-    return data;
-}
+// export const getToken = async (loginInfo, type) => {
+//    const authURL = `${URL}/auth/${type}`;
+//    const resp = await fetch (authURL, {
+//        method: 'POST',
+//        headers: {
+//            'Content-Type': 'application/json',
+//        },
+//        body: JSON.stringify(loginInfo),
+//    });
+//    const data = await resp.json();
+//    localStorage.setItem('TOKEN', data.token);
+//    return data.token
+// }
