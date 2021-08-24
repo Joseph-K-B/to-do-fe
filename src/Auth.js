@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { getToken } from './fetch-utils.js';
+import { getToken } from './fetch-utils.js';
 
 
 class Auth extends Component {
@@ -10,18 +10,19 @@ class Auth extends Component {
     getType = () => {
         return this.props.type === 'signin' ? 'Sign In' : 'Sign Up';
     };
-    // handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     const token = await getToken(
-    //         {
-    //             email: this.state.email,
-    //             password: this.state.password,
-    //         },
-    //         this.props.type
-    //     );
-    //     this.props.setToken(token);
-    //     this.props.history.push('/todos')
-    // }
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        const token = await getToken(
+            {
+                email: this.state.email,
+                password: this.state.password,
+            },
+            this.props.type
+        );
+        this.props.setLoggedIn(true);
+        // this.props.setToken(token);
+        this.props.history.push('/todos')
+    };
     render () {
         console.log(this.props)
         console.log(this.getType())
@@ -29,7 +30,7 @@ class Auth extends Component {
         return (
             <>
                 <h1>{type}</h1>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <fieldset>
                         <label>Email:</label>
                         <input
