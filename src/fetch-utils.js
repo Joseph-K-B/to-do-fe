@@ -11,5 +11,5 @@ export const getToken = async (loginInfo, type) => {
    });
    const data = await resp.json();
    localStorage.setItem('TOKEN', data.token);
-   return data.id
+   return data.token
 }

@@ -19,8 +19,7 @@ class Auth extends Component {
             },
             this.props.type
         );
-        this.props.setLoggedIn(true);
-        // this.props.setToken(token);
+        this.props.setToken(token);
         this.props.history.push('/todos')
     };
     render () {

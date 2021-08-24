@@ -19,10 +19,10 @@ class Home extends Component {
 
 class App extends Component {
   state = {
-    loggedIn: false,
+    token: localStorage.getItem('TOKEN'),
   };
-  setLoggedIn = (val) => {
-   this.setState({ loggedin: val });
+  setToken = (val) => {
+   this.setState({ token: val });
  };
    render() {
     return (
@@ -35,7 +35,7 @@ class App extends Component {
                 path='/signin'
                 render={(routerProps) => (
                   <Auth 
-                    setLoggedIn={this.setLoggedIn}
+                    setToken={this.setToken}
                     type='signin'
                     {...routerProps} />
                 )}
@@ -44,10 +44,19 @@ class App extends Component {
                 path='/signup'
                 render={(routerProps) => (
                   <Auth 
-                    setLoggedIn={this.setLoggedIn}
+                    setToken={this.setToken}
                     type='signup'
                     {...routerProps} />
                 )}
+              />
+              <Route 
+                path='/todos'
+                render={(routerProps) =>
+                  this.state.token ? (
+                    <ToDos {...routerProps} />
+                  ) : (
+                    <Redirect to='/signin' />
+                  )}
               />
             </Switch>
         </BrowserRouter>
