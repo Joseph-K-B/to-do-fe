@@ -10,6 +10,7 @@ import Header from './Header.js';
 import Auth from './Auth.js'
 // import Home from './Home.js';
 
+class Profile extends Component {}
 class Home extends Component {
   render() {
     console.log(this.props);
@@ -31,6 +32,7 @@ class App extends Component {
           <Header />
             <Switch>
               <Route exact path= '/' component = {Home} />
+              <Route path='/users/:userId' component={Profile} />
               <Route 
                 path='/signin'
                 render={(routerProps) => (
@@ -53,7 +55,10 @@ class App extends Component {
                 path='/todos'
                 render={(routerProps) =>
                   this.state.token ? (
-                    <ToDos {...routerProps} />
+                    <ToDos 
+                      token={this.state.token}
+                      {...routerProps} 
+                    />
                   ) : (
                     <Redirect to='/signin' />
                   )}
