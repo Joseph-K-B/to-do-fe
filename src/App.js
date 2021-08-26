@@ -1,25 +1,74 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { 
+  BrowserRouter,
+  Route,
+  Switch,
+  Redirect, 
+} from 'react-router-dom';
+import ToDos from './ToDos.js'
+import Header from './Header.js';
+import Auth from './Auth.js'
+// import Home from './Home.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Profile extends Component {}
+class Home extends Component {
+  render() {
+    console.log(this.props);
+    return <h1>Home</h1>
+  }
+}
+
+class App extends Component {
+  state = {
+    token: localStorage.getItem('TOKEN'),
+  };
+  setToken = (val) => {
+   this.setState({ token: val });
+ };
+   render() {
+    return (
+      
+        <BrowserRouter>
+          <Header />
+            <Switch>
+              <Route exact path= '/' component = {Home} />
+              <Route path='/users/:userId' component={Profile} />
+              <Route 
+                path='/signin'
+                render={(routerProps) => (
+                  <Auth 
+                    setToken={this.setToken}
+                    type='signin'
+                    {...routerProps} />
+                )}
+              />
+              <Route 
+                path='/signup'
+                render={(routerProps) => (
+                  <Auth 
+                    setToken={this.setToken}
+                    type='signup'
+                    {...routerProps} />
+                )}
+              />
+              <Route 
+                path='/todos'
+                render={(routerProps) =>
+                  this.state.token ? (
+                    <ToDos 
+                      token={this.state.token}
+                      {...routerProps} 
+                    />
+                  ) : (
+                    <Redirect to='/signin' />
+                  )}
+              />
+            </Switch>
+        </BrowserRouter>
+    
+    )
+  }
 }
 
 export default App;
+                
