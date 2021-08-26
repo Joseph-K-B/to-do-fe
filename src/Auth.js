@@ -23,8 +23,8 @@ class Auth extends Component {
         this.props.history.push('/todos')
     };
     render () {
-        console.log(this.props)
-        console.log(this.getType())
+        // console.log(this.props)
+        // console.log(this.getType())
         const type = this.getType()
         return (
             <>

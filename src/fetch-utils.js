@@ -1,7 +1,7 @@
 // const URL = 'https://glacial-ridge-47333.herokuapp.com'
 const URL = 'http://localhost:7890'
 
-export const getToken = async (loginInfo, type) => {
+export async function getToken (loginInfo, type){
    const authURL = `${URL}/auth/${type}`;
    const resp = await fetch (authURL, {
        method: 'POST',
@@ -12,6 +12,7 @@ export const getToken = async (loginInfo, type) => {
    });
    const data = await resp.json();
    localStorage.setItem('TOKEN', data.token);
+   console.log(data.token)
    return data.token
 }
 
@@ -26,7 +27,7 @@ export async function getToDos(token){
         },
     });
     const data = await resp.json();
-    // console.log(data);
+    console.log(data);
     return data;
 };
 
