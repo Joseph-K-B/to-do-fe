@@ -30,7 +30,7 @@ export async function getToDos(token){
     return data;
 };
 
-export const createTodo = async (token, todo) => {
+export async function createTodo(token, todo){
     const todosURL = `${URL}/api/todos`;
     const resp = await fetch(todosURL, {
         method: 'POST',

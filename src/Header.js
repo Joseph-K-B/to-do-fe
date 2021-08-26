@@ -6,7 +6,7 @@ class Header extends Component {
     render() {
         return (
             <header>
-                <NavLink  exact to='/' className='nav'>Home</NavLink>
+                <NavLink exact to='/'>Home</NavLink>
                 {this.state.token && (
                     <NavLink to='/todos'>To Do List</NavLink>
                 )}
@@ -14,13 +14,12 @@ class Header extends Component {
                     <>
                         <NavLink to='/signup'>Sign Up</NavLink>
                         <NavLink to='/signin'>Sign In</NavLink>
+                        
                     </>
                 )}
-                
-                {/* <NavLink  to='/signup' className='nav'>Sign up</NavLink>
-                <NavLink  to='/signin' className='nav'>Sign in</NavLink> */}
+           
             </header>
-        );
+            );
     }
 }
 
