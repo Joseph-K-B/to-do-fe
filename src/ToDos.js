@@ -6,15 +6,15 @@ class ToDos extends Component {
         todos: []
     };
     componentDidMount = async () => {
-        // this.fetchTodos()
-        const data = await getToDos(this.props.token);
-        this.setState({ todos: data });
+        this.fetchTodos()
+        // const data = await getToDos(this.props.token);
+        // this.setState({ todos: data });
     };
 
-    // fetchTodos = async () => {
-    //     const data = await getToDos(this.props.token);
-    //     this.setState({ todos: data});
-    // };
+    fetchTodos = async () => {
+        const data = await getToDos(this.props.token);
+        this.setState({ todos: data});
+    };
 
     handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,9 +23,8 @@ class ToDos extends Component {
             completed: false,
         });
         this.setState({newTodo: ''});
-        // this.fetchTodos();
-        this.setState((prevState) =>({ todos: [...prevState.todos, data]
-        }))
+        this.fetchTodos();
+        // this.setState((prevState) =>({ todos: [...prevState.todos, data]
     };
 
     handleCompleted = async (todo) => {
@@ -41,7 +40,7 @@ class ToDos extends Component {
                 <h1>To-Do List</h1>
                 <section className='todo-list'>
                 ${this.state.todos.map((todo) => (
-                <ul className='to-do-item' key={todo.id}>
+                <ul className='to-do-list' key={todo.id}>
                     <li>
                         <input type='checkbox' 
                                checked={todo.completed}
@@ -53,10 +52,11 @@ class ToDos extends Component {
                 </section>
                 <section>
                     <form onSubmit={this.handleSubmit}>
-                        <input value={this.state.newTodo}
-                        type='text'
-                        onChange={(e) =>
-                        this.setState({})}></input>
+                        <input 
+                            value={this.state.newTodo}
+                            type='text'
+                            onChange={(e) =>
+                            this.setState({})}></input>
                         <button>Add</button>
                     </form>
                     </section>    
