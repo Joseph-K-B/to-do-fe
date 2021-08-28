@@ -1,5 +1,5 @@
-// const URL = 'https://glacial-ridge-47333.herokuapp.com'
-const URL = 'http://localhost:7890'
+const URL = 'https://glacial-ridge-47333.herokuapp.com'
+// const URL = 'http://localhost:7890'
 
 export async function getToken (loginInfo, type){
    const authURL = `${URL}/auth/${type}`;
