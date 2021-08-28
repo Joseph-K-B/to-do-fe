@@ -8,7 +8,7 @@ import {
 import ToDos from './ToDos.js'
 import Header from './Header.js';
 import Auth from './Auth.js'
-// import Home from './Home.js';
+import'./Home.css';
 
 class Profile extends Component {}
 class Home extends Component {
